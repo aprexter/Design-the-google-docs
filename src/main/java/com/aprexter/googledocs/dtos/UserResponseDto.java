@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class UserResponseDto {
 
-    private String name;
+    private String userName;
 
     private String email;
 }

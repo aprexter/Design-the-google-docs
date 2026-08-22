@@ -28,8 +28,9 @@ public class UserController {
     }
 
     @PatchMapping
-    public ResponseEntity<UserResponseDto> updateUser(@RequestBody UserUpdateRequestDto userUpdateRequestDto) {
+    public ResponseEntity<UserResponseDto> updatePassword(@RequestBody UserUpdateRequestDto userUpdateRequestDto) {
         UserResponseDto updatedUser= userService.updateUser(userUpdateRequestDto);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
 }

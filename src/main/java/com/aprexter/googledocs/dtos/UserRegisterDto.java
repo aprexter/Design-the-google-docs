@@ -15,7 +15,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 public class UserRegisterDto {
     @NotBlank(message = "Name can't be Blank or Empty")
     @Size(min=3,max=30, message = "Name must be larger and Smaller than 3 and 30")
-    private String name;
+    private String userName;
     @NotBlank(message = "Password can't be Blank or Empty")
     @Size(min=5,max=30,message = "Password must be between 5 and 30")
     private String password;
