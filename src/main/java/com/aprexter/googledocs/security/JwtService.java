@@ -59,11 +59,36 @@ public class JwtService {
         return jwt.getTokenValue();
     }
 
-    public String extractUsername(String jwtToken) {
-        return "";
+    public String extractUsername(String token) {
+        Claims claims =  Jwts.parser()
+                .verifyWith(getSecretKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+        return claims.getSubject();
     }
 
-    public Boolean isTokenValid(String jwtToken, UserDetails userDetails) {
-        return false;
+    public boolean isTokenValid(
+            String token,
+            UserDetails userDetails
+    ) {
+
+        // Extract username from JWT
+        String username = extractUsername(token);
+
+        // Check username + expiration
+        return username.equals(userDetails.getUsername())
+                && !isTokenExpired(token);
+    }
+
+    private boolean isTokenExpired(String token) {
+        return extractClaim(token, Claims::getExpiration);
+    }
+    public <T> T extractClaim(
+            String token,
+            Function<Claims, T> claimsResolver
+    ) {
+        Claims claims = extractAllClaims(token);
+        return claimsResolver.apply(claims);
     }
 }
