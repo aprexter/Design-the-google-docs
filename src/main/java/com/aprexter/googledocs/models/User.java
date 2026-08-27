@@ -7,7 +7,9 @@ import lombok.Setter;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -30,4 +32,6 @@ public class User extends BaseModel{
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private ArrayList<Document>  documents;
+    @Enumerated(EnumType.STRING)
+    private Set<RoleType> roles=new HashSet<>();
 }

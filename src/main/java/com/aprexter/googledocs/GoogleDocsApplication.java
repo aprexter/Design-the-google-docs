@@ -23,23 +23,7 @@ public class GoogleDocsApplication {
 
 
 
-    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-                .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/auth/login",
-                                "/auth/register"
-                        ).permitAll()
 
-                        .anyRequest().authenticated()
-                );
-
-        return http.build();
-
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(GoogleDocsApplication.class, args);
