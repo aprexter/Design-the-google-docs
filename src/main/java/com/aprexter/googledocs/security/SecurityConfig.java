@@ -69,29 +69,29 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    @Bean
-    public JwtAuthenticationConverter jwtAuthenticationConverter() {
-
-        JwtGrantedAuthoritiesConverter authoritiesConverter =
-                new JwtGrantedAuthoritiesConverter();
-
-        authoritiesConverter.setAuthoritiesClaimName(
-                "authorities"
-        );
-
-        authoritiesConverter.setAuthorityPrefix("");
-
-        JwtAuthenticationConverter
-                authenticationConverter =
-                new JwtAuthenticationConverter();
-
-        authenticationConverter
-                .setJwtGrantedAuthoritiesConverter(
-                        authoritiesConverter
-                );
-
-        return authenticationConverter;
-    }
+//    @Bean
+//    public JwtAuthenticationConverter jwtAuthenticationConverter() {
+//
+//        JwtGrantedAuthoritiesConverter authoritiesConverter =
+//                new JwtGrantedAuthoritiesConverter();
+//
+//        authoritiesConverter.setAuthoritiesClaimName(
+//                "authorities"
+//        );
+//
+//        authoritiesConverter.setAuthorityPrefix("");
+//
+//        JwtAuthenticationConverter
+//                authenticationConverter =
+//                new JwtAuthenticationConverter();
+//
+//        authenticationConverter
+//                .setJwtGrantedAuthoritiesConverter(
+//                        authoritiesConverter
+//                );
+//
+//        return authenticationConverter;
+//    }
 
     @Bean
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
