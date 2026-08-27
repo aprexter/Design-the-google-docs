@@ -33,5 +33,5 @@ public class User extends BaseModel{
     @JoinColumn(name = "user_id")
     private ArrayList<Document>  documents;
     @Enumerated(EnumType.STRING)
-    private Set<RoleType> roles=new HashSet<>();
+    private List<RoleType> roles;
 }
